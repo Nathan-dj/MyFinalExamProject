@@ -1,4 +1,4 @@
-name: Actions Workflow
+name: Actions
 
 on:
   push:
@@ -13,17 +13,17 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Check out the code
+      - name: Véerifie le code
         uses: actions/checkout@v2  # Récupére le code source
 
-      - name: Display a message
+      - name: Affiche un message
         run: echo "Hello! Le Github actions a été" fait sur windows."
 
-      - name: Check if README.md exists
+      - name: Vérifie README.md exist
         run: |
           if (Test-Path "README.md") {
-            Write-Output "README.md exists."
+            Write-Output "README.md exist."
           } else {
-            Write-Error "README.md is missing!"
+            Write-Error "README.md est introuvable!"
             exit 1
           }
