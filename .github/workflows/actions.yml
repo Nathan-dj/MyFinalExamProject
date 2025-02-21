@@ -1,0 +1,29 @@
+name: Actions Workflow
+
+on:
+  push:
+    branches:
+      - main  # Déclenche l'action sur un push vers la branche principale
+  pull_request:
+    branches:
+      - main  # Déclenche l'action sur une Pull Request ouverte vers la branche principale
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2  # Récupére le code source
+
+      - name: Display a message
+        run: echo "Hello! Le Github actions a été" fait sur windows."
+
+      - name: Check if README.md exists
+        run: |
+          if (Test-Path "README.md") {
+            Write-Output "README.md exists."
+          } else {
+            Write-Error "README.md is missing!"
+            exit 1
+          }
